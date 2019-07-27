@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, SideNav } from '../../container';
+import { Content, Header, SideNav } from '../../container';
 
 import './MainLayout.scss';
 
@@ -10,7 +10,7 @@ const MainLayout = () => {
       <SideNav />
       <main>
         <Header />
-        <h1>main layout</h1>
+        <Content />
       </main>
     </div>
   );

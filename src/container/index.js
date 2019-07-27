@@ -1,4 +1,5 @@
+import Content from './Content/Content';
 import Header from './Header/Header';
 import SideNav from './Sidenav/Sidenav';
 
-export { Header, SideNav };
+export { Content, Header, SideNav };
