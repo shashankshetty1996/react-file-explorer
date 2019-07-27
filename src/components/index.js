@@ -1,3 +1,4 @@
+import Modal from './Modal/Modal';
 import Thumbnail from './Thumbnail/Thumbnail';
 
-export { Thumbnail };
+export { Modal, Thumbnail };

@@ -1,0 +1,32 @@
+@import '../../style/variables';
+
+.modal {
+  background: $white-color;
+  box-sizing: border-box;
+  padding: 25px 0 48px;
+  width: 316px;
+  z-index: $z-index-modal;
+
+  .modal-header {
+    height: 24px;
+    margin: 0 24px;
+    position: relative;
+
+    .modal-title {
+      color: $modal-header;
+      line-height: 24px;
+      text-align: center;
+      text-transform: capitalize;
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  .modal-content {
+    margin: 16px 48px 48px;
+  }
+}
