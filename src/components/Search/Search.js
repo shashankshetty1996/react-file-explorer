@@ -5,7 +5,7 @@ import cx from 'classnames';
 import './Search.scss';
 
 const Search = props => {
-  const { name, value, onChange, className, placeholder } = props;
+  const { value, onChange, className, placeholder, ...rest } = props;
 
   const containerClass = cx(['search-bar', `${className}`]);
 
@@ -28,23 +28,23 @@ const Search = props => {
         className="input-field"
         type="text"
         placeholder={placeholder}
-        name={name}
         value={searchValue}
         onChange={$event => searchFieldChanged($event)}
+        {...rest}
       />
     </div>
   );
 };
 
 Search.propTypes = {
-  name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
+  value: PropTypes.string,
   className: PropTypes.string,
   placeholder: PropTypes.string,
 };
 
 Search.defaultProps = {
+  value: '',
   className: '',
   placeholder: 'Search for anything',
 };

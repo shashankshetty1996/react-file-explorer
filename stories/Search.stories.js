@@ -16,7 +16,7 @@ const styles = {
 storiesOf('Search', module).add('File Search', () => {
   return (
     <div style={styles}>
-      <Search name="search" value="" onChange={value => console.log(value)} />
+      <Search onChange={value => console.log(value)} />
     </div>
   );
 });
