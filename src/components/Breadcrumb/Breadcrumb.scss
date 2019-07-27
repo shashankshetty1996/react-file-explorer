@@ -3,6 +3,11 @@
 .breadcrumb {
   height: 29px;
 
+  .go-up {
+    margin-right: 28px;
+    line-height: 29px;
+  }
+
   .separator {
     font-size: 26px;
     color: $inactive-link;

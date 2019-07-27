@@ -18,8 +18,19 @@ const Breadcrumb = props => {
     history.push(url);
   };
 
+  const goUp = () => {
+    const parentDirectoryPath = pathname.substring(0, pathname.lastIndexOf('/'));
+    history.push(parentDirectoryPath);
+  };
+
   return (
     <section className="breadcrumb">
+      <img
+        src="http://nosmalltask2.s3-website.ap-south-1.amazonaws.com/assets/icons/representative/arrow-green-circle.png"
+        alt="Go up"
+        className="go-up"
+        onClick={goUp}
+      />
       {path.map((link, index) => {
         const linkClass = cx(['nav-link', { active: index === path.length - 1 }]);
         return (
