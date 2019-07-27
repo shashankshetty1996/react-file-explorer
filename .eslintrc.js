@@ -8,6 +8,7 @@ module.exports = {
   rules: {
     quotes: [2, 'single'],
     'import/extensions': [0],
+    'import/prefer-default-export': [0],
     'no-console': [2],
     'no-underscore-dangle': [0],
     'react/no-find-dom-node': [0],
