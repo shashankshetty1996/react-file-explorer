@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 import cx from 'classnames';
 
+import { getPathArray, getParentDirectory } from '../../utils/utils';
+
 import './Breadcrumb.scss';
 
 const Breadcrumb = props => {
@@ -11,7 +13,7 @@ const Breadcrumb = props => {
     location: { pathname },
   } = props;
 
-  const path = pathname === '/' ? [''] : pathname.split('/');
+  const path = getPathArray(pathname);
 
   const navigatorTo = index => {
     const url = path.slice(0, index + 1).join('/');
@@ -19,7 +21,7 @@ const Breadcrumb = props => {
   };
 
   const goUp = () => {
-    const parentDirectoryPath = pathname.substring(0, pathname.lastIndexOf('/'));
+    const parentDirectoryPath = getParentDirectory(pathname);
     history.push(parentDirectoryPath);
   };
 
