@@ -27,4 +27,11 @@ storiesOf('Thumbnail', module)
         <Thumbnail name="songs" isDirectory />
       </div>
     );
+  })
+  .add('File Thumbnail without name', () => {
+    return (
+      <div style={styles}>
+        <Thumbnail name="a.pdf" showName={false} />
+      </div>
+    );
   });
