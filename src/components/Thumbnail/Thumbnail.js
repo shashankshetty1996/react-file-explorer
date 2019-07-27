@@ -10,7 +10,7 @@ import DirectoryPlaceholder from '../../assets/images/directory-placeholder.png'
 import './Thumbnail.scss';
 
 const Thumbnail = props => {
-  const { name, isDirectory, className, showName } = props;
+  const { name, isDirectory, className, showName, ...rest } = props;
 
   const containerClass = cx(['thumbnail', `${className}`]);
 
@@ -28,7 +28,7 @@ const Thumbnail = props => {
   }
 
   return (
-    <div className={containerClass}>
+    <div className={containerClass} {...rest}>
       {thumbnail}
       {showName && <p className="file-name">{name}</p>}
     </div>
