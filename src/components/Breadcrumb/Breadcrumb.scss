@@ -1,0 +1,23 @@
+@import '../../style/variables';
+
+.breadcrumb {
+  height: 29px;
+
+  .separator {
+    font-size: 26px;
+    color: $inactive-link;
+  }
+
+  .nav-link {
+    color: $inactive-link;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 24px;
+    padding: 0 4px;
+    line-height: 29px;
+
+    &.active {
+      color: $active-link;
+    }
+  }
+}
