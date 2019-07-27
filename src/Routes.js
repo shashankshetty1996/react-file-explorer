@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import { MainContainer } from './container';
+import { MainLayout } from './layout';
 
 const Routes = ({ childProps }) => {
   const props = {
@@ -12,7 +12,7 @@ const Routes = ({ childProps }) => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={MainContainer} props={props} />
+        <Route path="/" component={MainLayout} props={props} />
       </Switch>
     </BrowserRouter>
   );
