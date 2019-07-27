@@ -1,0 +1,3 @@
+@mixin set-typeface($typeface) {
+  font-family: $typeface, sans-serif;
+}

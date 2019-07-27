@@ -1,0 +1,14 @@
+@import '_variables';
+
+@mixin font-style {
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  @include set-typeface('lato-regular');
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+}

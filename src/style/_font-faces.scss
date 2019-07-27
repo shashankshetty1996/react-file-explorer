@@ -1,0 +1,40 @@
+@font-face {
+  @include font-style;
+  font-family: 'lato-regular';
+  src: url('/fonts/Lato-Regular.ttf');
+}
+@font-face {
+  @include font-style;
+  font-family: 'lato-black';
+  src: url('/fonts/Lato-Black.ttf');
+}
+@font-face {
+  @include font-style;
+  font-family: 'lato-bold';
+  src: url('/fonts/Lato-Bold.ttf');
+}
+@font-face {
+  @include font-style;
+  font-family: 'lato-semi-bold';
+  src: url('/fonts/Lato-Semibold.ttf');
+}
+@font-face {
+  @include font-style;
+  font-family: 'lato-medium';
+  src: url('/fonts/Lato-Medium.ttf');
+}
+@font-face {
+  @include font-style;
+  font-family: 'lato-heavy';
+  src: url('/fonts/Lato-Heavy.ttf');
+}
+@font-face {
+  @include font-style;
+  font-family: 'lato-light';
+  src: url('/fonts/Lato-Light.ttf');
+}
+@font-face {
+  @include font-style;
+  font-family: 'lato-italic';
+  src: url('/fonts/Lato-Italic.ttf');
+}
