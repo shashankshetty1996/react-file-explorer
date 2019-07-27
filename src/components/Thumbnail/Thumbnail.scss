@@ -1,0 +1,28 @@
+@import '../../style/variables';
+
+.thumbnail {
+  display: inline-block;
+  position: relative;
+
+  .file-thumbnail {
+    position: relative;
+  }
+
+  .file-extension {
+    @include set-typeface('Lato-Bold');
+    bottom: 8px;
+    color: $white-color;
+    font-size: 14px;
+    font-weight: bold;
+    left: 8px;
+    position: absolute;
+  }
+
+  .file-name {
+    @include set-typeface('Lato-Regular');
+    color: $text-color;
+    font-size: 16px;
+    margin-top: 9px;
+    text-align: center;
+  }
+}
