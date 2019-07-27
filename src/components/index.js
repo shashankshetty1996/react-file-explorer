@@ -1,5 +1,6 @@
+import Input from './Input/Input';
 import Modal from './Modal/Modal';
 import Search from './Search/Search';
 import Thumbnail from './Thumbnail/Thumbnail';
 
-export { Modal, Search, Thumbnail };
+export { Input, Modal, Search, Thumbnail };
