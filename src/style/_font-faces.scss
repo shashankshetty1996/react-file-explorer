@@ -1,3 +1,4 @@
+// Lato fonts
 @font-face {
   @include font-style;
   font-family: 'lato-regular';
@@ -37,4 +38,11 @@
   @include font-style;
   font-family: 'lato-italic';
   src: url('/fonts/Lato/Lato-Italic.ttf');
+}
+
+// Proxima Nova fonts
+@font-face {
+  @include font-style;
+  font-family: 'ProximaNova-Regular';
+  src: url('fonts/ProximaNova/ProximaNova-Regular.otf');
 }
