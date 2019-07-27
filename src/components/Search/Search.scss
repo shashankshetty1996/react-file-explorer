@@ -1,0 +1,31 @@
+@import '../../style/variables';
+
+.search-bar {
+  box-sizing: border-box;
+  display: inline-block;
+  height: 32px;
+  position: relative;
+
+  .search-icon {
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    opacity: 0.5;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+  }
+
+  .input-field {
+    border: 1px solid $search-border;
+    border-radius: 8px;
+    font-size: 14px;
+    padding: 8px 12px;
+    text-indent: 28px;
+    width: 204px;
+
+    &::placeholder {
+      color: $grey1;
+    }
+  }
+}
