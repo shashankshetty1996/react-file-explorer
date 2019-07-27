@@ -1,9 +1,13 @@
 import React from 'react';
 
+import Router from './Routes';
+
 import './App.scss';
 
-function App() {
-  return <div className="App">file explore</div>;
-}
+const App = () => (
+  <div className="app">
+    <Router />
+  </div>
+);
 
 export default App;
