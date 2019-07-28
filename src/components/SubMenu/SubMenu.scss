@@ -7,6 +7,7 @@
   box-shadow: $sub-menu-box-shadow;
   box-sizing: border-box;
   width: 159px;
+  z-index: $z-index-sub-menu;
 
   .item {
     box-sizing: border-box;
