@@ -20,14 +20,14 @@ const Content = props => {
   // Method to add file to directory store.
   const addFile = () => {};
 
-  const onSubMenuClickHandler = ({ id, name }, action) => {
+  const onSubMenuClickHandler = ({ id, name, is_directory: isDirectory }, action) => {
     const { onGetContentInfo, onDeleteContent } = props;
 
     const {
       SUB_MENU_OPTIONS: { OPEN, GET_INFO, DELETE },
     } = CONSTANTS;
 
-    if (action === OPEN) {
+    if (action === OPEN && isDirectory) {
       const goTo = pathname === '/' ? name : `${pathname}/${name}`;
       push(goTo);
     } else if (action === GET_INFO) {
