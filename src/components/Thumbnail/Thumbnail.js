@@ -5,6 +5,8 @@ import cx from 'classnames';
 import SubMenu from '../SubMenu/SubMenu';
 import { getFileExtension } from '../../utils/utils';
 
+import CONSTANTS from '../../Constants';
+
 import FilePlaceholder from '../../assets/images/file-placeholder.png';
 import DirectoryPlaceholder from '../../assets/images/directory-placeholder.png';
 
@@ -14,6 +16,10 @@ const Thumbnail = props => {
   const { element, onSubMenuClick, className, showName, ...rest } = props;
 
   const { name, is_directory: isDirectory } = element;
+
+  const {
+    SUB_MENU_OPTIONS: { OPEN, GET_INFO, DELETE },
+  } = CONSTANTS;
 
   const [showSubMenu, setShowSubMenu] = useState(false);
 
@@ -41,13 +47,13 @@ const Thumbnail = props => {
 
   const subMenuClickHandler = ({ label }) => {
     setShowSubMenu(false);
-    onSubMenuClick(element.id, label);
+    onSubMenuClick(element, label);
   };
 
   const SubMenuOption = [
-    { label: 'Open', onClick: subMenuClickHandler },
-    { label: 'Get info', onClick: subMenuClickHandler },
-    { label: 'Delete', onClick: subMenuClickHandler, className: 'danger' },
+    { label: OPEN, onClick: subMenuClickHandler },
+    { label: GET_INFO, onClick: subMenuClickHandler },
+    { label: DELETE, onClick: subMenuClickHandler, className: 'danger' },
   ];
 
   const fileExtension = getFileExtension(name);
