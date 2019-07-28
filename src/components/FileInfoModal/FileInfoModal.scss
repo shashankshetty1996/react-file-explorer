@@ -1,0 +1,29 @@
+@import '../../style/variables';
+
+.file-info-modal {
+  .info-modal-content {
+    margin-top: 24px;
+
+    .details {
+      display: flex;
+      font-size: 16px;
+      justify-content: center;
+      margin: 12px 0;
+    }
+
+    .tag {
+      color: $modal-header;
+      display: inline-block;
+      text-align: right;
+      padding-right: 8px;
+      width: 50%;
+    }
+
+    .value {
+      box-sizing: border-box;
+      color: $inactive-link;
+      display: inline-block;
+      width: 50%;
+    }
+  }
+}

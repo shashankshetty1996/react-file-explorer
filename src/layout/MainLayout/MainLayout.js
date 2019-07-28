@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { Content, Header, SideNav } from '../../container';
-import { Modal } from '../../components';
+import { FileInfoModal } from '../../components';
 
 import { clearInfoAction } from '../../store/actions/Directory.action';
 import { getPathArray, prepareDirectoryTree } from '../../utils/utils';
@@ -38,11 +38,7 @@ const MainLayout = props => {
         <Header />
         <Content data={data} />
       </main>
-      {info && (
-        <Modal className="file-info-modal" title="File Info" onClose={closeFileInfo}>
-          modal here
-        </Modal>
-      )}
+      {info && <FileInfoModal element={info} closeFileInfo={closeFileInfo} />}
     </section>
   );
 };
