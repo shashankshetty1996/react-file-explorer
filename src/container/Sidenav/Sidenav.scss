@@ -23,9 +23,17 @@
     padding: 12px 32px;
     text-transform: capitalize;
 
-    &:hover,
-    &.active {
+    &:hover:not(.drop-down),
+    &.active:not(.drop-down) {
       background-color: $active-bg;
+    }
+  }
+
+  .drop-down {
+    .drop-down-menu {
+      border-left: 1px solid $active-bg;
+      margin: 15px 0;
+      padding-left: 16px;
     }
   }
 }

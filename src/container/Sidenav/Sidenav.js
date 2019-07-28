@@ -5,8 +5,9 @@ import cx from 'classnames';
 import './Sidenav.scss';
 
 const generateSideNav = (data, level = 0) => {
+  const ulClass = cx(['directory-list', { 'drop-down-menu': level !== 0 }]);
   return (
-    <ul data-level={level}>
+    <ul className={ulClass} data-level={level}>
       {data.map(el => {
         let child = null;
         // Checking for child directory.
