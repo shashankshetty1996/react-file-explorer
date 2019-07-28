@@ -12,7 +12,20 @@
     color: $grey1;
     font-weight: bold;
     font-size: 12px;
-    margin: 0 24px 0 32px;
+    margin: 0 24px 15px 32px;
     text-transform: uppercase;
+  }
+
+  .links {
+    color: $modal-header;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 12px 32px;
+    text-transform: capitalize;
+
+    &:hover,
+    &.active {
+      background-color: $active-bg;
+    }
   }
 }
