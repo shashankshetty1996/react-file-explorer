@@ -14,6 +14,7 @@ const Content = props => {
   const {
     data,
     history: { push },
+    location: { pathname },
   } = props;
 
   // Method to add file to directory store.
@@ -27,7 +28,8 @@ const Content = props => {
     } = CONSTANTS;
 
     if (action === OPEN) {
-      push(`/${name}`);
+      const goTo = pathname === '/' ? name : `${pathname}/${name}`;
+      push(goTo);
     } else if (action === GET_INFO) {
       onGetContentInfo(id);
     } else if (action === DELETE) {
@@ -52,6 +54,7 @@ const Content = props => {
 
 Content.propTypes = {
   history: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
   onGetContentInfo: PropTypes.func.isRequired,
   onDeleteContent: PropTypes.func.isRequired,
