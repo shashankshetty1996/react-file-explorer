@@ -13,7 +13,7 @@ import DirectoryPlaceholder from '../../assets/images/directory-placeholder.png'
 import './Thumbnail.scss';
 
 const Thumbnail = props => {
-  const { element, onSubMenuClick, className, showName, ...rest } = props;
+  const { element, onSubMenuClick, className, fromModal, ...rest } = props;
 
   const { name, is_directory: isDirectory } = element;
 
@@ -38,7 +38,12 @@ const Thumbnail = props => {
     }
   };
 
-  const containerClass = cx(['thumbnail', { active: showSubMenu }, `${className}`]);
+  const containerClass = cx([
+    'thumbnail',
+    { active: showSubMenu },
+    { 'modal-icon': fromModal },
+    `${className}`,
+  ]);
 
   const onRightClickHandler = event => {
     event.preventDefault();
@@ -72,8 +77,8 @@ const Thumbnail = props => {
   return (
     <div className={containerClass} {...rest} onContextMenu={onRightClickHandler}>
       {thumbnail}
-      {showName && <p className="file-name">{name}</p>}
-      {showSubMenu && (
+      {!fromModal && <p className="file-name">{name}</p>}
+      {!fromModal && showSubMenu && (
         <div ref={subMenuRef}>
           <SubMenu className="context-menu" data={SubMenuOption} />
         </div>
@@ -84,14 +89,15 @@ const Thumbnail = props => {
 
 Thumbnail.propTypes = {
   element: PropTypes.object.isRequired,
-  onSubMenuClick: PropTypes.func.isRequired,
+  onSubMenuClick: PropTypes.func,
   className: PropTypes.string,
-  showName: PropTypes.bool,
+  fromModal: PropTypes.bool,
 };
 
 Thumbnail.defaultProps = {
+  onSubMenuClick: () => {},
   className: '',
-  showName: true,
+  fromModal: false,
 };
 
 export default Thumbnail;

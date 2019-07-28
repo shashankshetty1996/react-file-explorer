@@ -7,8 +7,12 @@
   padding: 12px 13.5px 9px;
 
   &.active,
-  &:hover {
+  &:hover:not(.modal-icon) {
     background-color: $blue-light;
+  }
+
+  &.modal-icon {
+    margin-top: 28px;
   }
 
   .file-thumbnail {
