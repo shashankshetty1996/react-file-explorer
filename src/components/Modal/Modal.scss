@@ -2,6 +2,9 @@
 
 .modal {
   background: $white-color;
+  border: $modal-border;
+  border-radius: 8px;
+  box-shadow: $modal-box-shadow;
   box-sizing: border-box;
   padding: 25px 0 48px;
   width: 316px;
