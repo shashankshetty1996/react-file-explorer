@@ -1,11 +1,13 @@
 @import '../../style/variables';
 
 .thumbnail {
+  cursor: pointer;
   display: inline-block;
   position: relative;
+  padding: 12px 13.5px 9px;
 
-  &.is-directory {
-    cursor: pointer;
+  &:hover {
+    background-color: $blue-light;
   }
 
   .file-thumbnail {
@@ -28,5 +30,10 @@
     font-size: 16px;
     margin-top: 9px;
     text-align: center;
+  }
+
+  .context-menu {
+    position: absolute;
+    left: 50%;
   }
 }
