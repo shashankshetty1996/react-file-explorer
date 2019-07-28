@@ -9,7 +9,6 @@ import { getPathArray } from '../../utils/utils';
 import './Content.scss';
 
 const Content = props => {
-  // const { root } = props.directory;
   const {
     directory: { root },
     location: { pathname },
@@ -27,10 +26,17 @@ const Content = props => {
     [...root]
   );
 
+  const onSubMenuClickHandler = (id, action) => {};
+
   return (
     <section className="content">
       {data.map(el => (
-        <Thumbnail className="icon" key={el.id} isDirectory={el.is_directory} name={el.name} />
+        <Thumbnail
+          className="icon"
+          key={el.id}
+          element={el}
+          onSubMenuClick={onSubMenuClickHandler}
+        />
       ))}
       <AddField onClick={addFile} />
     </section>
