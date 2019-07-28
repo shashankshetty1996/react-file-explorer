@@ -22,7 +22,7 @@ storiesOf('SubMenu', module).add('Basic SubMenu', () => {
   ];
   return (
     <div style={styles}>
-      <SubMenu data={data} id={1} />
+      <SubMenu data={data} />
     </div>
   );
 });

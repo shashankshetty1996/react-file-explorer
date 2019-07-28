@@ -5,7 +5,7 @@ import cx from 'classnames';
 import './SubMenu.scss';
 
 const SubMenu = props => {
-  const { data, id, className, ...rest } = props;
+  const { data, className, ...rest } = props;
 
   const containerClass = cx(['sub-menu', `${className}`]);
 
@@ -14,12 +14,7 @@ const SubMenu = props => {
       {data.map((item, index) => {
         const itemClass = cx(['item', `${item.className}`]);
         return (
-          <div
-            className={itemClass}
-            key={index}
-            role="button"
-            onClick={() => item.onClick(id, item)}
-          >
+          <div className={itemClass} key={index} role="button" onClick={() => item.onClick(item)}>
             {item.label}
           </div>
         );
@@ -36,7 +31,6 @@ SubMenu.propTypes = {
       className: PropTypes.string,
     })
   ).isRequired,
-  id: PropTypes.any.isRequired,
   className: PropTypes.string,
 };
 
