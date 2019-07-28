@@ -9,11 +9,21 @@ const generateSideNav = (data, level = 0) => {
     <ul data-level={level}>
       {data.map(el => {
         let child = null;
+        // Checking for child directory.
         const hasChild = el.children.length !== 0;
-        const liClass = cx(['directory-links', { 'drop-down': hasChild }]);
+
+        // list tag classes
+        const liClass = cx([
+          { links: level === 0 },
+          { 'sub-links': level !== 0 },
+          { 'drop-down': hasChild },
+        ]);
+
+        // Add child component if directory present under it.
         if (hasChild) {
           child = generateSideNav(el.children, level + 1);
         }
+
         return (
           <li key={el.id} className={liClass}>
             {el.name}
