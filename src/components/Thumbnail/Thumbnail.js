@@ -12,7 +12,7 @@ import './Thumbnail.scss';
 const Thumbnail = props => {
   const { name, isDirectory, className, showName, ...rest } = props;
 
-  const containerClass = cx(['thumbnail', `${className}`]);
+  const containerClass = cx(['thumbnail', { 'is-directory': isDirectory }, `${className}`]);
 
   const fileExtension = getFileExtension(name);
 

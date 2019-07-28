@@ -4,6 +4,10 @@
   display: inline-block;
   position: relative;
 
+  &.is-directory {
+    cursor: pointer;
+  }
+
   .file-thumbnail {
     position: relative;
   }
