@@ -20,8 +20,14 @@
     color: $modal-header;
     cursor: pointer;
     font-size: 16px;
-    padding: 12px 32px;
     text-transform: capitalize;
+
+    .anchor-link {
+      box-sizing: border-box;
+      display: inline-block;
+      padding: 12px 32px;
+      width: 100%;
+    }
 
     &:hover:not(.drop-down),
     &.active:not(.drop-down) {
@@ -31,9 +37,15 @@
 
   .drop-down {
     .drop-down-menu {
+      box-sizing: border-box;
       border-left: 1px solid $active-bg;
-      margin: 15px 0;
+      margin: 15px 32px;
       padding-left: 16px;
+    }
+
+    .anchor {
+      display: inline-block;
+      width: 100%;
     }
   }
 }
