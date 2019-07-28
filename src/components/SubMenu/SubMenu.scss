@@ -34,8 +34,8 @@
     }
 
     &:hover {
-      background-color: $sub-menu-active;
-      border: 1px solid $sub-menu-active;
+      background-color: $active-bg;
+      border: 1px solid $active-bg;
     }
   }
 }
