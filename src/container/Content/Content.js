@@ -22,7 +22,7 @@ const Content = props => {
   const data = path.slice(1).reduce(
     (acc, name) => {
       const res = acc.find(el => el.name === name);
-      return res.children;
+      return res ? res.children : [];
     },
     [...root]
   );
