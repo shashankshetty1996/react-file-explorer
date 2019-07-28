@@ -4,15 +4,18 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { Content, Header, SideNav } from '../../container';
+import { Modal } from '../../components';
 
+import { clearInfoAction } from '../../store/actions/Directory.action';
 import { getPathArray, prepareDirectoryTree } from '../../utils/utils';
 
 import './MainLayout.scss';
 
 const MainLayout = props => {
   const {
-    directory: { root },
+    directory: { root, info },
     location: { pathname },
+    onClearInfo,
   } = props;
 
   const directoryTree = prepareDirectoryTree(root);
@@ -26,24 +29,41 @@ const MainLayout = props => {
     [...root]
   );
 
+  const closeFileInfo = () => onClearInfo();
+
   return (
-    <div className="main-layout">
+    <section className="main-layout">
       <SideNav data={directoryTree} />
       <main>
         <Header />
         <Content data={data} />
       </main>
-    </div>
+      {info && (
+        <Modal className="file-info-modal" title="File Info" onClose={closeFileInfo}>
+          modal here
+        </Modal>
+      )}
+    </section>
   );
 };
 
 MainLayout.propTypes = {
   directory: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  onClearInfo: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   directory: state.directory,
 });
 
-export default withRouter(connect(mapStateToProps)(MainLayout));
+const mapDispatchToProps = dispatch => ({
+  onClearInfo: () => dispatch(clearInfoAction()),
+});
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MainLayout)
+);
