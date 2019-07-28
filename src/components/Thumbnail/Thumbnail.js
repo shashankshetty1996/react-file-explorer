@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
@@ -17,7 +17,22 @@ const Thumbnail = props => {
 
   const [showSubMenu, setShowSubMenu] = useState(false);
 
-  const containerClass = cx(['thumbnail', `${className}`]);
+  const subMenuRef = useRef(null);
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleClickOutside = event => {
+    if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
+      setShowSubMenu(false);
+    }
+  };
+
+  const containerClass = cx(['thumbnail', { active: showSubMenu }, `${className}`]);
 
   const onRightClickHandler = event => {
     event.preventDefault();
@@ -28,8 +43,6 @@ const Thumbnail = props => {
     setShowSubMenu(false);
     onSubMenuClick(element.id, label);
   };
-
-  const subMenuOutSideClick = () => setShowSubMenu(false);
 
   const SubMenuOption = [
     { label: 'Open', onClick: subMenuClickHandler },
@@ -55,11 +68,9 @@ const Thumbnail = props => {
       {thumbnail}
       {showName && <p className="file-name">{name}</p>}
       {showSubMenu && (
-        <SubMenu
-          className="context-menu"
-          data={SubMenuOption}
-          subMenuOutSideClick={subMenuOutSideClick}
-        />
+        <div ref={subMenuRef}>
+          <SubMenu className="context-menu" data={SubMenuOption} />
+        </div>
       )}
     </div>
   );

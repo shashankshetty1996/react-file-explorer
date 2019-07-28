@@ -6,6 +6,7 @@
   position: relative;
   padding: 12px 13.5px 9px;
 
+  &.active,
   &:hover {
     background-color: $blue-light;
   }
