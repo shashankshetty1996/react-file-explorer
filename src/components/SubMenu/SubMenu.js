@@ -12,10 +12,11 @@ const SubMenu = props => {
   return (
     <div className={containerClass} {...rest}>
       {data.map((item, index) => {
-        const itemClass = cx(['item', `${item.className}`]);
+        const { onClick, label, className: itemClassName = '' } = item;
+        const itemClass = cx(['item', `${itemClassName}`]);
         return (
-          <div className={itemClass} key={index} role="button" onClick={() => item.onClick(item)}>
-            {item.label}
+          <div className={itemClass} key={index} role="button" onClick={() => onClick(item)}>
+            {label}
           </div>
         );
       })}

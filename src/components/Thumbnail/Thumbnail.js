@@ -56,7 +56,7 @@ const Thumbnail = props => {
   };
 
   const SubMenuOption = [
-    { label: OPEN, onClick: subMenuClickHandler },
+    { label: OPEN, onClick: subMenuClickHandler, className: cx({ disable: !isDirectory }) },
     { label: GET_INFO, onClick: subMenuClickHandler },
     { label: DELETE, onClick: subMenuClickHandler, className: 'danger' },
   ];
