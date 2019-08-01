@@ -13,7 +13,7 @@ const styles = {
   padding: '24px',
 };
 
-storiesOf('SubMenu', module).add('Basic SubMenu', () => {
+storiesOf('SubMenu', module).addWithJSX('Basic SubMenu', () => {
   const logger = (...rest) => console.log(rest);
   const data = [
     { label: 'Open', onClick: logger },

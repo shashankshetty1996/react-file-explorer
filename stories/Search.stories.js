@@ -13,7 +13,7 @@ const styles = {
   padding: '24px',
 };
 
-storiesOf('Search', module).add('File Search', () => {
+storiesOf('Search', module).addWithJSX('File Search', () => {
   return (
     <div style={styles}>
       <Search onChange={value => console.log(value)} />

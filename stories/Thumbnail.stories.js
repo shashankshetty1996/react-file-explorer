@@ -14,21 +14,21 @@ const styles = {
 };
 
 storiesOf('Thumbnail', module)
-  .add('File Thumbnail', () => {
+  .addWithJSX('File Thumbnail', () => {
     return (
       <div style={styles}>
         <Thumbnail name="a.pdf" />
       </div>
     );
   })
-  .add('Directory Thumbnail', () => {
+  .addWithJSX('Directory Thumbnail', () => {
     return (
       <div style={styles}>
         <Thumbnail name="songs" isDirectory />
       </div>
     );
   })
-  .add('File Thumbnail without name', () => {
+  .addWithJSX('File Thumbnail without name', () => {
     return (
       <div style={styles}>
         <Thumbnail name="a.pdf" showName={false} />

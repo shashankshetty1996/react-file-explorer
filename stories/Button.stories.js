@@ -14,7 +14,7 @@ const styles = {
   width: '250px',
 };
 
-storiesOf('Button', module).add('Basic Button', () => {
+storiesOf('Button', module).addWithJSX('Basic Button', () => {
   return (
     <div style={styles}>
       <Button onClick={() => console.log('close clicked')}>Create</Button>

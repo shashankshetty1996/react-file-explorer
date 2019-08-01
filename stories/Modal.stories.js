@@ -13,7 +13,7 @@ const styles = {
   padding: '24px',
 };
 
-storiesOf('Modal', module).add('Basic Modal', () => {
+storiesOf('Modal', module).addWithJSX('Basic Modal', () => {
   return (
     <div style={styles}>
       <Modal title="File Info" onClose={() => console.log('close clicked')}>

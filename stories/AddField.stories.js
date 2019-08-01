@@ -9,7 +9,7 @@ const styles = {
   padding: '24px',
 };
 
-storiesOf('AddField', module).add('File AddField', () => {
+storiesOf('AddField', module).addWithJSX('File AddField', () => {
   return (
     <div style={styles}>
       <AddField onClick={() => console.log('clicked')} />
