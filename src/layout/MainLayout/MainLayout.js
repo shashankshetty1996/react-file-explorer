@@ -1,50 +1,58 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 import { Content, Header, SideNav } from '../../container';
-import { FileInfoModal } from '../../components';
 
-import { clearInfoAction } from '../../store/actions/Directory.action';
+import { setCurrentDirectoryAction } from '../../store/actions/Directory.action';
 import { getPathArray, prepareDirectoryTree } from '../../utils/utils';
 
 import './MainLayout.scss';
 
 const MainLayout = props => {
   const {
-    directory: { root, info },
+    directory: { root, currentDirectory },
     location: { pathname },
     history: { push },
-    onClearInfo,
+    setDirectoryDetails,
   } = props;
 
   const directoryTree = prepareDirectoryTree(root);
 
   const path = getPathArray(pathname);
 
-  const currentPath = path.slice(1);
+  const currentPath = path;
   let currentDir = [...root];
-  let currentPathDetails = { id: 0, name: '', data: [...root] };
+
+  let currentPathDetails = null;
+
+  useEffect(() => {
+    if (currentPathDetails && currentDirectory.id !== currentPathDetails.id) {
+      setDirectoryDetails(currentPathDetails);
+    }
+  }, [currentPathDetails, pathname]);
 
   while (currentPath.length) {
     const cur = currentPath.shift();
 
-    const dir = currentDir.find(el => el.name === cur);
+    // Check if root directory
+    if (cur === '') {
+      currentPathDetails = { id: 0, name: '', data: root };
+    } else {
+      const dir = currentDir.find(el => el.name === cur);
 
-    if (dir === undefined || !dir.is_directory) {
-      currentPathDetails = { id: 0, name: '', data: [...root] };
-      push('/');
-      break;
+      if (dir === undefined || !dir.is_directory) {
+        currentPathDetails = { id: 0, name: '', data: [...root] };
+        push('/');
+        break;
+      }
+
+      currentDir = [...dir.children];
+      currentPathDetails = { id: dir.id, name: dir.name, data: currentDir };
     }
-
-    currentDir = [...dir.children];
-    currentPathDetails = { id: dir.id, name: dir.name, data: currentDir };
   }
-
-  // console.log('dispatch element', currentPathDetails);
-
-  const closeFileInfo = () => onClearInfo();
 
   return (
     <section className="main-layout">
@@ -53,7 +61,6 @@ const MainLayout = props => {
         <Header />
         <Content data={currentPathDetails.data} />
       </main>
-      {info && <FileInfoModal element={info} closeFileInfo={closeFileInfo} />}
     </section>
   );
 };
@@ -62,7 +69,7 @@ MainLayout.propTypes = {
   directory: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired,
-  onClearInfo: PropTypes.func.isRequired,
+  setDirectoryDetails: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -70,7 +77,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClearInfo: () => dispatch(clearInfoAction()),
+  setDirectoryDetails: ({ id, name, data }) => dispatch(setCurrentDirectoryAction(id, name, data)),
 });
 
 export default withRouter(

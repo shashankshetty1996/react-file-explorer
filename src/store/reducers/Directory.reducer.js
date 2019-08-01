@@ -13,6 +13,11 @@ const Directory = (state = initialState, action = {}) => {
       return { ...state, root: updatedRoot };
     }
 
+    case ACTIONS.PATH.SET_PATH_DETAILS: {
+      const updatedCurrentDirectory = { ...action.data };
+      return { ...state, currentDirectory: updatedCurrentDirectory };
+    }
+
     default: {
       return state;
     }

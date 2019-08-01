@@ -1,6 +1,7 @@
 import uuid from 'uuid';
 
 const Directory = {
+  currentDirectory: { id: 0, name: '' },
   root: [
     {
       id: uuid(),
