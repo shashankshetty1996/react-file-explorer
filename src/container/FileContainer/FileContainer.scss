@@ -1,0 +1,11 @@
+@import '../../style/variables';
+
+.file-container {
+  display: inline-flex;
+  position: relative;
+
+  .context-menu {
+    position: absolute;
+    left: 50%;
+  }
+}
