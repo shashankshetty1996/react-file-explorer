@@ -15,19 +15,34 @@ const MainLayout = props => {
   const {
     directory: { root, info },
     location: { pathname },
+    history: { push },
     onClearInfo,
   } = props;
 
   const directoryTree = prepareDirectoryTree(root);
 
   const path = getPathArray(pathname);
-  const data = path.slice(1).reduce(
-    (acc, name) => {
-      const res = acc.find(el => el.name === name);
-      return res ? res.children : [];
-    },
-    [...root]
-  );
+
+  const currentPath = path.slice(1);
+  let currentDir = [...root];
+  let currentPathDetails = { id: 0, name: '', data: [...root] };
+
+  while (currentPath.length) {
+    const cur = currentPath.shift();
+
+    const dir = currentDir.find(el => el.name === cur);
+
+    if (dir === undefined || !dir.is_directory) {
+      currentPathDetails = { id: 0, name: '', data: [...root] };
+      push('/');
+      break;
+    }
+
+    currentDir = [...dir.children];
+    currentPathDetails = { id: dir.id, name: dir.name, data: currentDir };
+  }
+
+  // console.log('dispatch element', currentPathDetails);
 
   const closeFileInfo = () => onClearInfo();
 
@@ -36,7 +51,7 @@ const MainLayout = props => {
       <SideNav data={directoryTree} />
       <main>
         <Header />
-        <Content data={data} />
+        <Content data={currentPathDetails.data} />
       </main>
       {info && <FileInfoModal element={info} closeFileInfo={closeFileInfo} />}
     </section>
@@ -46,6 +61,7 @@ const MainLayout = props => {
 MainLayout.propTypes = {
   directory: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   onClearInfo: PropTypes.func.isRequired,
 };
 
