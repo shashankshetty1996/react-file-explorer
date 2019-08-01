@@ -5,7 +5,7 @@ import { Directory as initialState } from '../meta/initialState/index';
 const Directory = (state = initialState, action = {}) => {
   switch (action.type) {
     case ACTIONS.SUB_MENU.CLEAR_INFO: {
-      return { ...state, info: null };
+      return { ...state };
     }
 
     case ACTIONS.SUB_MENU.DELETE: {

@@ -98,7 +98,6 @@ const Directory = {
       date: '27th Jul, 2019',
     },
   ],
-  info: null,
 };
 
 export default Directory;
