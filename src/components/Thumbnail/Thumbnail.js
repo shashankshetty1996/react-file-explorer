@@ -28,7 +28,7 @@ const Thumbnail = props => {
   }
 
   return (
-    <div className={containerClass} {...rest} onDoubleClickCapture={onDoubleClick}>
+    <div className={containerClass} onDoubleClickCapture={onDoubleClick} {...rest}>
       {thumbnail}
       {showName && <p className="file-name">{name}</p>}
     </div>
