@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { AddField, Thumbnail } from '../../components';
+import { AddField } from '../../components';
+import FileContainer from '../FileContainer/FileContainer';
 
-import { getInfoAction, deleteDirectoryAction } from '../../store/actions/Directory.action';
+import { deleteDirectoryAction } from '../../store/actions/Directory.action';
 import CONSTANTS from '../../Constants';
 
 import './Content.scss';
@@ -21,17 +22,15 @@ const Content = props => {
   const addFile = () => {};
 
   const onSubMenuClickHandler = ({ id, name, is_directory: isDirectory }, action) => {
-    const { onGetContentInfo, onDeleteContent } = props;
+    const { onDeleteContent } = props;
 
     const {
-      SUB_MENU_OPTIONS: { OPEN, GET_INFO, DELETE },
+      SUB_MENU_OPTIONS: { OPEN, DELETE },
     } = CONSTANTS;
 
     if (action === OPEN && isDirectory) {
       const goTo = pathname === '/' ? name : `${pathname}/${name}`;
       push(goTo);
-    } else if (action === GET_INFO) {
-      onGetContentInfo(id);
     } else if (action === DELETE) {
       onDeleteContent(id);
     }
@@ -40,7 +39,7 @@ const Content = props => {
   return (
     <section className="content">
       {data.map(el => (
-        <Thumbnail
+        <FileContainer
           className="icon"
           key={el.id}
           element={el}
@@ -56,12 +55,10 @@ Content.propTypes = {
   history: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
-  onGetContentInfo: PropTypes.func.isRequired,
   onDeleteContent: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
-  onGetContentInfo: id => dispatch(getInfoAction(id)),
   onDeleteContent: id => dispatch(deleteDirectoryAction(id)),
 });
 
