@@ -57,9 +57,22 @@ const FileContainer = props => {
     { label: DELETE, onClick: subMenuClickHandler, className: 'danger' },
   ];
 
+  const doubleClickHandler = () => {
+    if (isDirectory) {
+      onSubMenuClick(element, OPEN);
+    } else {
+      setShowDetailModal(true);
+    }
+  };
+
   return (
     <div className="file-container" {...rest} onContextMenu={onRightClickHandler}>
-      <Thumbnail name={name} isDirectory={isDirectory} className={thumbnailClass} showName />
+      <Thumbnail
+        name={name}
+        isDirectory={isDirectory}
+        className={thumbnailClass}
+        onDoubleClick={doubleClickHandler}
+      />
       {showSubMenu && (
         <div ref={subMenuRef}>
           <SubMenu className="context-menu" data={SubMenuOption} />

@@ -10,7 +10,7 @@ import DirectoryPlaceholder from '../../assets/images/directory-placeholder.png'
 import './Thumbnail.scss';
 
 const Thumbnail = props => {
-  const { name, isDirectory, className, showName, ...rest } = props;
+  const { name, isDirectory, onDoubleClick, className, showName, ...rest } = props;
 
   const containerClass = cx(['thumbnail', { 'is-directory': isDirectory }, `${className}`]);
 
@@ -28,7 +28,7 @@ const Thumbnail = props => {
   }
 
   return (
-    <div className={containerClass} {...rest}>
+    <div className={containerClass} {...rest} onDoubleClickCapture={onDoubleClick}>
       {thumbnail}
       {showName && <p className="file-name">{name}</p>}
     </div>
@@ -38,11 +38,13 @@ const Thumbnail = props => {
 Thumbnail.propTypes = {
   name: PropTypes.string.isRequired,
   isDirectory: PropTypes.bool.isRequired,
+  onDoubleClick: PropTypes.func,
   className: PropTypes.string,
   showName: PropTypes.bool,
 };
 
 Thumbnail.defaultProps = {
+  onDoubleClick: () => {},
   className: '',
   showName: true,
 };
