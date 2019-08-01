@@ -5,11 +5,7 @@ export const deleteDirectoryAction = id => ({
   data: id,
 });
 
-export const setCurrentDirectoryAction = (id, name, data) => {
-  const payload = { id, name, data };
-
-  return {
-    type: ACTIONS.PATH.SET_PATH_DETAILS,
-    data: payload,
-  };
-};
+export const setCurrentDirectoryAction = payload => ({
+  type: ACTIONS.PATH.SET_PATH_DETAILS,
+  data: payload,
+});

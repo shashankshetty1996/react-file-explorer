@@ -34,23 +34,28 @@ const MainLayout = props => {
     }
   }, [currentPathDetails, pathname]);
 
+  const homePathDetail = { id: 0, name: '', path: '', data: [...root] };
+
   while (currentPath.length) {
     const cur = currentPath.shift();
 
     // Check if root directory
     if (cur === '') {
-      currentPathDetails = { id: 0, name: '', data: root };
+      currentPathDetails = { ...homePathDetail };
     } else {
       const dir = currentDir.find(el => el.name === cur);
 
       if (dir === undefined || !dir.is_directory) {
-        currentPathDetails = { id: 0, name: '', data: [...root] };
+        currentPathDetails = { ...homePathDetail };
         push('/');
         break;
       }
 
       currentDir = [...dir.children];
-      currentPathDetails = { id: dir.id, name: dir.name, data: currentDir };
+      const updatedPath = currentPathDetails
+        ? `${currentPathDetails.path}/${dir.name}`
+        : `/${dir.name}`;
+      currentPathDetails = { id: dir.id, name: dir.name, path: updatedPath, data: currentDir };
     }
   }
 
@@ -77,7 +82,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setDirectoryDetails: ({ id, name, data }) => dispatch(setCurrentDirectoryAction(id, name, data)),
+  setDirectoryDetails: details => dispatch(setCurrentDirectoryAction(details)),
 });
 
 export default withRouter(
