@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './AddField.scss';
+
 const AddField = props => {
   const { onClick } = props;
   return (

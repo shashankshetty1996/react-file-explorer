@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { AddField } from '../../components';
+import { AddField, Modal } from '../../components';
 import FileContainer from '../FileContainer/FileContainer';
 
 import { deleteDirectoryAction } from '../../store/actions/Directory.action';
@@ -19,8 +19,12 @@ const Content = props => {
     showAddContent,
   } = props;
 
+  const [showAddModal, setShowAddModal] = useState(false);
+
   // Method to add file to directory store.
-  const addFile = () => {};
+  const addFile = () => setShowAddModal(true);
+
+  const addModalClose = () => setShowAddModal(false);
 
   const onSubMenuClickHandler = ({ id, name, is_directory: isDirectory }, action) => {
     const { onDeleteContent } = props;
@@ -48,6 +52,11 @@ const Content = props => {
         />
       ))}
       {showAddContent && <AddField onClick={addFile} />}
+      {showAddModal && (
+        <Modal className="add-modal" title="Create New" onClose={addModalClose}>
+          Content
+        </Modal>
+      )}
     </section>
   );
 };
