@@ -20,6 +20,7 @@ const WarningModal = props => {
           <img
             src="http://nosmalltask2.s3-website.ap-south-1.amazonaws.com/assets/icons/functional/close.svg"
             alt="close"
+            className="close"
             onClick={onClose}
           />
         </header>
