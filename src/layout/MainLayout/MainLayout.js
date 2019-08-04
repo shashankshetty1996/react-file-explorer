@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -18,6 +18,9 @@ const MainLayout = props => {
     history: { push },
     setDirectoryDetails,
   } = props;
+
+  const [data, setData] = useState([]);
+  const [searchText, setSearchText] = useState('');
 
   const directoryTree = prepareDirectoryTree(root);
 
@@ -59,12 +62,27 @@ const MainLayout = props => {
     }
   }
 
+  const updatedCurrentData = (currentPathDetails && currentPathDetails.data) || [];
+  if (searchText === '' && updatedCurrentData.length !== data.length) {
+    setData(updatedCurrentData);
+  }
+
+  const filterData = searchTerm => {
+    setSearchText(searchTerm);
+    if (searchTerm) {
+      const updatedData = data.filter(el => el.name.indexOf(searchTerm) >= 0);
+      setData(updatedData);
+    }
+  };
+
+  const showAddContent = searchText === '';
+
   return (
     <section className="main-layout">
       <SideNav data={directoryTree} />
       <main>
-        <Header />
-        <Content data={currentPathDetails.data} />
+        <Header onSearch={filterData} />
+        <Content data={data} showAddContent={showAddContent} />
       </main>
     </section>
   );

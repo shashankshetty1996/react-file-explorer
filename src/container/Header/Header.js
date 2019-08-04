@@ -1,12 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Breadcrumb, Search } from '../../components';
 
 import './Header.scss';
 
 const Header = props => {
+  const { onSearch } = props;
+
   const searchFiles = value => {
-    // file to be searched
+    onSearch(value);
   };
 
   return (
@@ -19,6 +22,10 @@ const Header = props => {
       </section>
     </header>
   );
+};
+
+Header.propTypes = {
+  onSearch: PropTypes.func.isRequired,
 };
 
 export default Header;
