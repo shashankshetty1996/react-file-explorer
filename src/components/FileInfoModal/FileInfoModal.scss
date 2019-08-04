@@ -1,6 +1,11 @@
 @import '../../style/variables';
 
 .file-info-modal {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+
   .info-modal-content {
     margin-top: 24px;
 
