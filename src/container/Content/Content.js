@@ -16,6 +16,7 @@ const Content = props => {
     data,
     history: { push },
     location: { pathname },
+    showAddContent,
   } = props;
 
   // Method to add file to directory store.
@@ -46,7 +47,7 @@ const Content = props => {
           onSubMenuClick={onSubMenuClickHandler}
         />
       ))}
-      <AddField onClick={addFile} />
+      {showAddContent && <AddField onClick={addFile} />}
     </section>
   );
 };
@@ -56,6 +57,11 @@ Content.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
   onDeleteContent: PropTypes.func.isRequired,
+  showAddContent: PropTypes.bool,
+};
+
+Content.defaultProps = {
+  showAddContent: true,
 };
 
 const mapDispatchToProps = dispatch => ({
