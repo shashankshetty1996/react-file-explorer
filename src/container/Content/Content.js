@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { AddContentForm, AddField, Modal } from '../../components';
+import { AddContentForm, AddField, Button, Modal, WarningModal } from '../../components';
 import FileContainer from '../FileContainer/FileContainer';
 
 import { deleteDirectoryAction } from '../../store/actions/Directory.action';
@@ -20,11 +20,14 @@ const Content = props => {
   } = props;
 
   const [showAddModal, setShowAddModal] = useState(false);
+  const [warningModalContent, setWarningModal] = useState(null);
 
   // Method to add file to directory store.
   const addFile = () => setShowAddModal(true);
 
   const addModalClose = () => setShowAddModal(false);
+
+  const closeWarningModal = () => setWarningModal(null);
 
   const onSubMenuClickHandler = ({ id, name, is_directory: isDirectory }, action) => {
     const { onDeleteContent } = props;
@@ -41,7 +44,34 @@ const Content = props => {
     }
   };
 
-  const onContentCreated = () => {};
+  const warningModalRender = message => {
+    return (
+      <div className="alert-text">
+        <p className="info">{message}</p>
+
+        <div className="warning-footer">
+          <Button onClick={closeWarningModal}>Close</Button>
+        </div>
+      </div>
+    );
+  };
+
+  const onContentCreated = content => {
+    const {
+      WARNING_MODAL: { FILE_EXIST, FILE_EXTENSION_MISSING },
+    } = CONSTANTS;
+
+    addModalClose();
+
+    const currentDirFiles = data.map(el => el.name.toLowerCase());
+    if (currentDirFiles.indexOf(content.name.toLowerCase()) > -1) {
+      setWarningModal(warningModalRender(FILE_EXIST));
+    } else if (!content.isDirectory && content.name.split('.').length === 1) {
+      setWarningModal(warningModalRender(FILE_EXTENSION_MISSING));
+    } else {
+      setWarningModal('LGTM');
+    }
+  };
 
   return (
     <section className="content">
@@ -58,6 +88,9 @@ const Content = props => {
         <Modal className="add-modal" title="Create New" onClose={addModalClose}>
           <AddContentForm onCreate={onContentCreated} />
         </Modal>
+      )}
+      {warningModalContent && (
+        <WarningModal onClose={closeWarningModal}>{warningModalContent}</WarningModal>
       )}
     </section>
   );

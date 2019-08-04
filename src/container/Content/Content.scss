@@ -1,3 +1,5 @@
+@import '../../style/variables';
+
 .content {
   display: flex;
   justify-content: space-between;
@@ -11,5 +13,20 @@
     position: fixed;
     transform: translate(-50%, -50%);
     top: 50%;
+  }
+
+  .alert-text {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .info {
+      @include set-typeface('ProximaNova-Regular');
+      margin: 16px 0;
+    }
+
+    .warning-footer {
+      background: $grey2;
+    }
   }
 }

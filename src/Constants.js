@@ -15,6 +15,11 @@ const Constants = {
       CLEAR_INPUT: 'CLEAR_INPUT',
     },
   },
+  WARNING_MODAL: {
+    FILE_EXIST:
+      'File with this name already exist in your current directory, Please create another file with different name',
+    FILE_EXTENSION_MISSING: 'File cannot be created without extension',
+  },
 };
 
 export default Constants;
