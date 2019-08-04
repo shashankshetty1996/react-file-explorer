@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+import './Tabs.scss';
+
 const Tabs = props => {
   const { tabs, onTabClick, defaultSelected, className } = props;
 
