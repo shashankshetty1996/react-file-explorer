@@ -46,7 +46,14 @@ const AddContentForm = props => {
     event.preventDefault();
     const { tabState, input } = controller;
     const isDirectory = tabState === FOLDER;
-    onCreate({ ...input, isDirectory });
+
+    for (const field in input) {
+      if (input[field] === '') {
+        return false;
+      }
+    }
+
+    return onCreate({ ...input, isDirectory });
   };
 
   return (
@@ -60,7 +67,7 @@ const AddContentForm = props => {
         />
       </div>
       <div className="form">
-        <form>
+        <form method="post">
           {inputField.map((name, index) => {
             const value = controller.input[name];
             const placeholder = capitalization(name);
