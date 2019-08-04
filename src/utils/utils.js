@@ -18,4 +18,6 @@ const prepareDirectoryTree = data => {
     });
 };
 
-export { getFileExtension, getPathArray, getParentDirectory, prepareDirectoryTree };
+const capitalization = str => str.charAt(0).toUpperCase() + str.slice(1);
+
+export { getFileExtension, getPathArray, getParentDirectory, prepareDirectoryTree, capitalization };
