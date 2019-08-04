@@ -76,7 +76,7 @@ const AddContentForm = props => {
               />
             );
           })}
-          <Button type="submit" onClick={createContent}>
+          <Button className="form-submit" type="submit" onClick={createContent}>
             Create
           </Button>
         </form>
