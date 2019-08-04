@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import cx from 'classnames';
 
 import { AddContentForm, AddField, Button, Modal, WarningModal } from '../../components';
 import FileContainer from '../FileContainer/FileContainer';
@@ -30,8 +31,6 @@ const Content = props => {
   const closeWarningModal = () => setWarningModal(null);
 
   const onSubMenuClickHandler = ({ id, name, is_directory: isDirectory }, action) => {
-    const { onDeleteContent } = props;
-
     const {
       SUB_MENU_OPTIONS: { OPEN, DELETE },
     } = CONSTANTS;
@@ -40,17 +39,31 @@ const Content = props => {
       const goTo = pathname === '/' ? name : `${pathname}/${name}`;
       push(goTo);
     } else if (action === DELETE) {
-      onDeleteContent(id);
+      setWarningModal(warningModalRender(`Are you sure you want to delete ${name}`, true, id));
     }
   };
 
-  const warningModalRender = message => {
+  const confirmDelete = id => {
+    const { onDeleteContent } = props;
+    onDeleteContent(id);
+  };
+
+  const warningModalRender = (message, showConfirm = false, ...rest) => {
+    const closeBtnClass = cx({ 'w-50': showConfirm });
+    const confirmBtnClass = cx(['danger-bg', { 'w-50': showConfirm }]);
     return (
       <div className="alert-text">
         <p className="info">{message}</p>
 
         <div className="warning-footer">
-          <Button onClick={closeWarningModal}>Close</Button>
+          <Button className={closeBtnClass} onClick={closeWarningModal}>
+            Close
+          </Button>
+          {showConfirm && (
+            <Button className={confirmBtnClass} onClick={() => confirmDelete(rest)}>
+              Confirm
+            </Button>
+          )}
         </div>
       </div>
     );

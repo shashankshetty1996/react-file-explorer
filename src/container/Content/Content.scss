@@ -20,6 +20,10 @@
     flex-direction: column;
     width: 100%;
 
+    .w-50 {
+      width: 40%;
+    }
+
     .info {
       @include set-typeface('ProximaNova-Regular');
       margin: 16px 0;
@@ -27,6 +31,9 @@
 
     .warning-footer {
       background: $grey2;
+      display: flex;
+      justify-content: space-between;
+      margin: 16px 0;
     }
   }
 }
