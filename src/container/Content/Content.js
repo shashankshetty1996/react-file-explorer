@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { AddField, Modal } from '../../components';
+import { AddContentForm, AddField, Modal } from '../../components';
 import FileContainer from '../FileContainer/FileContainer';
 
 import { deleteDirectoryAction } from '../../store/actions/Directory.action';
@@ -41,6 +41,8 @@ const Content = props => {
     }
   };
 
+  const onContentCreated = () => {};
+
   return (
     <section className="content">
       {data.map(el => (
@@ -54,7 +56,7 @@ const Content = props => {
       {showAddContent && <AddField onClick={addFile} />}
       {showAddModal && (
         <Modal className="add-modal" title="Create New" onClose={addModalClose}>
-          Content
+          <AddContentForm onCreate={onContentCreated} />
         </Modal>
       )}
     </section>
