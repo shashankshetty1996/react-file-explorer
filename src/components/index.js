@@ -1,4 +1,5 @@
 import AddField from './AddField/AddField';
+import Backdrop from './Backdrop/Backdrop';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
 import Button from './Button/Button';
 import FileInfoModal from './FileInfoModal/FileInfoModal';
@@ -7,5 +8,18 @@ import Modal from './Modal/Modal';
 import Search from './Search/Search';
 import SubMenu from './SubMenu/SubMenu';
 import Thumbnail from './Thumbnail/Thumbnail';
+import WarningModal from './WarningModal/WarningModal';
 
-export { AddField, Breadcrumb, Button, FileInfoModal, Input, Modal, Search, SubMenu, Thumbnail };
+export {
+  AddField,
+  Backdrop,
+  Breadcrumb,
+  Button,
+  FileInfoModal,
+  Input,
+  Modal,
+  Search,
+  SubMenu,
+  Thumbnail,
+  WarningModal,
+};

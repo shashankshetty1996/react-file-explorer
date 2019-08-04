@@ -1,0 +1,21 @@
+@import '../../style/variables';
+
+.warning-modal {
+  background-color: $white-color;
+  border-radius: 5px;
+  box-sizing: border-box;
+  left: 50%;
+  padding: 16px 32px;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 360px;
+  z-index: $z-index-modal;
+
+  .header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+}
