@@ -7,6 +7,7 @@ import Input from './Input/Input';
 import Modal from './Modal/Modal';
 import Search from './Search/Search';
 import SubMenu from './SubMenu/SubMenu';
+import Tabs from './Tabs/Tabs';
 import Thumbnail from './Thumbnail/Thumbnail';
 import WarningModal from './WarningModal/WarningModal';
 
@@ -20,6 +21,7 @@ export {
   Modal,
   Search,
   SubMenu,
+  Tabs,
   Thumbnail,
   WarningModal,
 };

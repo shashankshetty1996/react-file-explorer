@@ -1,0 +1,32 @@
+@import '../../style/variables';
+
+$tab-radius: 8px;
+
+.tabs {
+  background-color: $white-color;
+  border: 1px solid $search-border;
+  border-radius: $tab-radius;
+  display: inline-flex;
+
+  .tab {
+    color: $text-color;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 12px;
+
+    &.active {
+      background-color: $blue;
+      color: $white-color;
+
+      &:first-of-type {
+        border-top-left-radius: $tab-radius;
+        border-bottom-left-radius: $tab-radius;
+      }
+
+      &:last-of-type {
+        border-top-right-radius: $tab-radius;
+        border-bottom-right-radius: $tab-radius;
+      }
+    }
+  }
+}
