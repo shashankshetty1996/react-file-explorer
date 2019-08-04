@@ -37,7 +37,7 @@ const MainLayout = props => {
     }
   }, [currentPathDetails, pathname]);
 
-  const homePathDetail = { id: 0, name: '', path: '', data: [...root] };
+  const homePathDetail = { id: 0, name: '', path: [], data: [...root] };
 
   while (currentPath.length) {
     const cur = currentPath.shift();
@@ -55,9 +55,7 @@ const MainLayout = props => {
       }
 
       currentDir = [...dir.children];
-      const updatedPath = currentPathDetails
-        ? `${currentPathDetails.path}/${dir.name}`
-        : `/${dir.name}`;
+      const updatedPath = currentPathDetails ? [...currentPathDetails.path, dir.name] : [''];
       currentPathDetails = { id: dir.id, name: dir.name, path: updatedPath, data: currentDir };
     }
   }
