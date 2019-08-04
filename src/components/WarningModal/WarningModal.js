@@ -4,6 +4,8 @@ import cx from 'classnames';
 
 import Backdrop from '../Backdrop/Backdrop';
 
+import './WarningModal.scss';
+
 const WarningModal = props => {
   const { title, onClose, children, className } = props;
 
@@ -28,13 +30,14 @@ const WarningModal = props => {
 };
 
 WarningModal.propTypes = {
-  title: PropTypes.string.isRequired,
   onClose: PropTypes.func.isRequired,
   children: PropTypes.any.isRequired,
+  title: PropTypes.string,
   className: PropTypes.string,
 };
 
 WarningModal.defaultProps = {
+  title: 'Warning',
   className: '',
 };
 
