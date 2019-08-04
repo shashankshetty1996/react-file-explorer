@@ -49,19 +49,26 @@ const Content = props => {
   };
 
   const warningModalRender = (message, showConfirm = false, ...rest) => {
+    const {
+      WARNING_MODAL: {
+        BUTTON: { CLOSE, CONFIRM },
+      },
+    } = CONSTANTS;
+
     const closeBtnClass = cx({ 'w-50': showConfirm });
     const confirmBtnClass = cx(['danger-bg', { 'w-50': showConfirm }]);
+
     return (
       <div className="alert-text">
         <p className="info">{message}</p>
 
         <div className="warning-footer">
           <Button className={closeBtnClass} onClick={closeWarningModal}>
-            Close
+            {CLOSE}
           </Button>
           {showConfirm && (
             <Button className={confirmBtnClass} onClick={() => confirmDelete(rest)}>
-              Confirm
+              {CONFIRM}
             </Button>
           )}
         </div>
@@ -71,7 +78,9 @@ const Content = props => {
 
   const onContentCreated = content => {
     const {
-      WARNING_MODAL: { FILE_EXIST, FILE_EXTENSION_MISSING },
+      WARNING_MODAL: {
+        ALERT: { FILE_EXIST, FILE_EXTENSION_MISSING },
+      },
     } = CONSTANTS;
 
     addModalClose();

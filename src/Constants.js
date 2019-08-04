@@ -16,9 +16,15 @@ const Constants = {
     },
   },
   WARNING_MODAL: {
-    FILE_EXIST:
-      'File with this name already exist in your current directory, Please create another file with different name',
-    FILE_EXTENSION_MISSING: 'File cannot be created without extension',
+    BUTTON: {
+      CLOSE: 'Close',
+      CONFIRM: 'Confirm',
+    },
+    ALERT: {
+      FILE_EXIST:
+        'File with this name already exist in your current directory, Please create another file with different name',
+      FILE_EXTENSION_MISSING: 'File cannot be created without extension',
+    },
   },
 };
 
