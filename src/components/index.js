@@ -1,3 +1,4 @@
+import AddContentForm from './AddContentForm/AddContentForm';
 import AddField from './AddField/AddField';
 import Backdrop from './Backdrop/Backdrop';
 import Breadcrumb from './Breadcrumb/Breadcrumb';
@@ -12,6 +13,7 @@ import Thumbnail from './Thumbnail/Thumbnail';
 import WarningModal from './WarningModal/WarningModal';
 
 export {
+  AddContentForm,
   AddField,
   Backdrop,
   Breadcrumb,
