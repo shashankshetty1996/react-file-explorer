@@ -7,6 +7,9 @@ const actionTypes = {
   PATH: {
     SET_PATH_DETAILS: 'PATH-SET_PATH_DETAILS',
   },
+  CONTENT: {
+    CREATE: 'CONTENT-CREATE',
+  },
 };
 
 export default actionTypes;
