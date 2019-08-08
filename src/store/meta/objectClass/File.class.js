@@ -1,7 +1,7 @@
 import uuid from 'uuid';
 
 class File {
-  constructor(name, creator, size, date) {
+  constructor({ name, creator, size, date }) {
     this.id = uuid();
     this.name = name;
     this.creator = creator;
