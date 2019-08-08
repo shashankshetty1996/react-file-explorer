@@ -7,7 +7,7 @@ import cx from 'classnames';
 import { AddContentForm, AddField, Button, Modal, WarningModal } from '../../components';
 import FileContainer from '../FileContainer/FileContainer';
 
-import { deleteDirectoryAction } from '../../store/actions/Directory.action';
+import { createDirectoryAction, deleteDirectoryAction } from '../../store/actions/Directory.action';
 import CONSTANTS from '../../Constants';
 
 import './Content.scss';
@@ -77,6 +77,8 @@ const Content = props => {
   };
 
   const onContentCreated = content => {
+    const { onCreateContent } = props;
+
     const {
       WARNING_MODAL: {
         ALERT: { FILE_EXIST, FILE_EXTENSION_MISSING },
@@ -91,7 +93,7 @@ const Content = props => {
     } else if (!content.isDirectory && content.name.split('.').length === 1) {
       setWarningModal(warningModalRender(FILE_EXTENSION_MISSING));
     } else {
-      setWarningModal('LGTM');
+      onCreateContent(content);
     }
   };
 
@@ -123,6 +125,7 @@ Content.propTypes = {
   location: PropTypes.object.isRequired,
   data: PropTypes.array.isRequired,
   onDeleteContent: PropTypes.func.isRequired,
+  onCreateContent: PropTypes.func.isRequired,
   showAddContent: PropTypes.bool,
 };
 
@@ -132,6 +135,7 @@ Content.defaultProps = {
 
 const mapDispatchToProps = dispatch => ({
   onDeleteContent: id => dispatch(deleteDirectoryAction(id)),
+  onCreateContent: content => dispatch(createDirectoryAction(content)),
 });
 
 export default withRouter(
