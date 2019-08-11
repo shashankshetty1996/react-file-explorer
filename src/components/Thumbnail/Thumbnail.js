@@ -16,6 +16,18 @@ const Thumbnail = props => {
 
   const fileExtension = getFileExtension(name);
 
+  const clicks = [];
+  let timeoutPromise;
+  const detectDoubleClick = () => {
+    clicks.push(new Date().getTime());
+    clearTimeout(timeoutPromise);
+    timeoutPromise = setTimeout(() => {
+      if (clicks.length > 1 && clicks[clicks.length - 1] - clicks[clicks.length - 2] < 250) {
+        onDoubleClick();
+      }
+    }, 250);
+  };
+
   let thumbnail = (
     <div className="file-thumbnail">
       <img src={FilePlaceholder} alt={`${fileExtension} file`} />
@@ -28,7 +40,7 @@ const Thumbnail = props => {
   }
 
   return (
-    <div className={containerClass} onDoubleClickCapture={onDoubleClick} {...rest}>
+    <div className={containerClass} onClick={detectDoubleClick} role="button" {...rest}>
       {thumbnail}
       {showName && <p className="file-name">{name}</p>}
     </div>
