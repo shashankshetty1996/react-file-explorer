@@ -60,9 +60,7 @@ const Sidenav = props => {
 
   return (
     <aside className="side-nav">
-      <h1 className="title">
-        <Link to="/">Root</Link>
-      </h1>
+      <h1 className="title">Root</h1>
       {generateSideNav(data)}
     </aside>
   );
