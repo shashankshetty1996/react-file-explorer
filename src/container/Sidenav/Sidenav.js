@@ -29,7 +29,11 @@ const generateSideNav = (data, id = 0, to = '') => {
           child = generateSideNav(el.children, el.id, linkTo);
         }
 
-        const linkClass = cx(['anchor', { 'anchor-link': id === 0 }]);
+        const linkClass = cx([
+          'anchor',
+          { 'anchor-link': id === 0 },
+          { 'drop-down-link': hasChild },
+        ]);
         return (
           <li key={el.id} className={liClass}>
             <Link className={linkClass} to={linkTo}>
