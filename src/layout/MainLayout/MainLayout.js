@@ -13,7 +13,10 @@ import './MainLayout.scss';
 
 const MainLayout = props => {
   const {
-    directory: { root, currentDirectory },
+    directory: {
+      root,
+      currentDirectory: { id: currentDirectoryID, path: directoryPath },
+    },
     location: { pathname },
     history: { push },
     setDirectoryDetails,
@@ -32,7 +35,7 @@ const MainLayout = props => {
   let currentPathDetails = null;
 
   useEffect(() => {
-    if (currentPathDetails && currentDirectory.id !== currentPathDetails.id) {
+    if (currentPathDetails && currentDirectoryID !== currentPathDetails.id) {
       setDirectoryDetails(currentPathDetails);
     }
   }, [currentPathDetails, pathname]);
@@ -77,7 +80,7 @@ const MainLayout = props => {
 
   return (
     <section className="main-layout">
-      <SideNav data={directoryTree} />
+      <SideNav data={directoryTree} directoryPath={directoryPath} />
       <main>
         <Header onSearch={filterData} />
         <Content data={data} showAddContent={showAddContent} />
