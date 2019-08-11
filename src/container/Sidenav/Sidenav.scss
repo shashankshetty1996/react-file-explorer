@@ -49,7 +49,6 @@
 
   .drop-down {
     .drop-down-link {
-      // background-color: red;
       position: relative;
       &::after {
         content: url(http://nosmalltask2.s3-website.ap-south-1.amazonaws.com/assets/icons/functional/dropdown.svg);
@@ -58,11 +57,20 @@
         transform: translateY(-50%);
         top: 50%;
       }
+
+      &.active-drop-down::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+
+      &.active-drop-down + .drop-down-menu {
+        display: block;
+      }
     }
 
     .drop-down-menu {
       box-sizing: border-box;
       border-left: 1px solid $active-bg;
+      display: none;
       margin: 15px 0 15px 32px;
       padding-left: 16px;
     }

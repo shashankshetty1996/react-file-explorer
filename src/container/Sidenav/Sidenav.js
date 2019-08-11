@@ -5,6 +5,14 @@ import { Link } from 'react-router-dom';
 
 import './Sidenav.scss';
 
+const toggleDropDown = event => {
+  event.stopPropagation();
+  const { target } = event;
+  if (target.classList.contains('drop-down-link')) {
+    target.classList.toggle('active-drop-down');
+  }
+};
+
 const generateSideNav = (data, id = 0, to = '') => {
   const ulClass = cx(['directory-list', { 'drop-down-menu': id !== 0 }]);
   return (
@@ -35,7 +43,7 @@ const generateSideNav = (data, id = 0, to = '') => {
           { 'drop-down-link': hasChild },
         ]);
         return (
-          <li key={el.id} className={liClass}>
+          <li key={el.id} className={liClass} onClick={toggleDropDown}>
             <Link className={linkClass} to={linkTo}>
               {el.name}
             </Link>
